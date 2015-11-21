@@ -47,6 +47,6 @@ angular.module('ionicParseApp.controllers')
 //                      }, function (err) {
 //                          // An error occured. Show a message to the user
 //                      });
-                  }
+                  // }
 
 });
