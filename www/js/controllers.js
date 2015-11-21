@@ -1,12 +1,13 @@
 angular.module('ionicParseApp.controllers', [])
-
-.controller('AppController', function($scope, $state, $rootScope, $ionicHistory, $stateParams) {
+.controller('AppController', function ($scope, $state, $rootScope, $ionicHistory, $stateParams) {
     if ($stateParams.clear) {
         $ionicHistory.clearHistory();
         $ionicHistory.clearCache();
     }
 
-    $scope.logout = function() {
+    Parse.initialize("qHDj4x6Wc9qqp4kChk9u2pTURr2EQdh5aaMMYU3W", "f5h0XtsTnEXmtPRMvTv47ndZD8xSSPuhNhjjAToc");
+
+    $scope.logout = function () {
         Parse.User.logOut();
         $rootScope.user = null;
         $rootScope.isLoggedIn = false;
@@ -16,17 +17,17 @@ angular.module('ionicParseApp.controllers', [])
     };
 })
 
-.controller('WelcomeController', function($scope, $state, $rootScope, $ionicHistory, $stateParams) {
+.controller('WelcomeController', function ($scope, $state, $rootScope, $ionicHistory, $stateParams) {
     if ($stateParams.clear) {
         $ionicHistory.clearHistory();
         $ionicHistory.clearCache();
     }
 
-    $scope.login = function() {
+    $scope.login = function () {
         $state.go('app.login');
     };
 
-    $scope.signUp = function() {
+    $scope.signUp = function () {
         $state.go('app.register');
     };
 
@@ -35,67 +36,21 @@ angular.module('ionicParseApp.controllers', [])
     }
 })
 
-.controller('HomeController', function($scope, $state, $rootScope) {
+.controller('HomeController', function ($scope, $state, $rootScope) {
 
     if (!$rootScope.isLoggedIn) {
         $state.go('welcome');
     }
 })
 
-.controller('LoginController', function($scope, $state, $rootScope, $ionicLoading) {
-    $scope.user = {
-        username: null,
-        password: null
-    };
-
-    $scope.error = {};
-
-    $scope.login = function() {
-        $scope.loading = $ionicLoading.show({
-            content: 'Logging in',
-            animation: 'fade-in',
-            showBackdrop: true,
-            maxWidth: 200,
-            showDelay: 0
-        });
-
-        var user = $scope.user;
-        Parse.User.logIn(('' + user.username).toLowerCase(), user.password, {
-            success: function(user) {
-                $ionicLoading.hide();
-                $rootScope.user = user;
-                $rootScope.isLoggedIn = true;
-                $state.go('app.home', {
-                    clear: true
-                });
-            },
-            error: function(user, err) {
-                $ionicLoading.hide();
-                // The login failed. Check error to see why.
-                if (err.code === 101) {
-                    $scope.error.message = 'Invalid login credentials';
-                } else {
-                    $scope.error.message = 'An unexpected error has ' +
-                        'occurred, please try again.';
-                }
-                $scope.$apply();
-            }
-        });
-    };
-
-    $scope.forgot = function() {
-        $state.go('app.forgot');
-    };
-})
-
-.controller('ForgotPasswordController', function($scope, $state, $ionicLoading) {
+.controller('ForgotPasswordController', function ($scope, $state, $ionicLoading) {
     $scope.user = {};
     $scope.error = {};
     $scope.state = {
         success: false
     };
 
-    $scope.reset = function() {
+    $scope.reset = function () {
         $scope.loading = $ionicLoading.show({
             content: 'Sending',
             animation: 'fade-in',
@@ -105,13 +60,13 @@ angular.module('ionicParseApp.controllers', [])
         });
 
         Parse.User.requestPasswordReset($scope.user.email, {
-            success: function() {
+            success: function () {
                 // TODO: show success
                 $ionicLoading.hide();
                 $scope.state.success = true;
                 $scope.$apply();
             },
-            error: function(err) {
+            error: function (err) {
                 $ionicLoading.hide();
                 if (err.code === 125) {
                     $scope.error.message = 'Email address does not exist';
@@ -124,16 +79,16 @@ angular.module('ionicParseApp.controllers', [])
         });
     };
 
-    $scope.login = function() {
+    $scope.login = function () {
         $state.go('app.login');
     };
 })
 
-.controller('RegisterController', function($scope, $state, $ionicLoading, $rootScope) {
+.controller('RegisterController', function ($scope, $state, $ionicLoading, $rootScope) {
     $scope.user = {};
     $scope.error = {};
 
-    $scope.register = function() {
+    $scope.register = function () {
 
         // TODO: add age verification step
 
@@ -151,7 +106,7 @@ angular.module('ionicParseApp.controllers', [])
         user.set("email", $scope.user.email);
 
         user.signUp(null, {
-            success: function(user) {
+            success: function (user) {
                 $ionicLoading.hide();
                 $rootScope.user = user;
                 $rootScope.isLoggedIn = true;
@@ -159,7 +114,7 @@ angular.module('ionicParseApp.controllers', [])
                     clear: true
                 });
             },
-            error: function(user, error) {
+            error: function (user, error) {
                 $ionicLoading.hide();
                 if (error.code === 125) {
                     $scope.error.message = 'Please specify a valid email ' +
@@ -176,7 +131,7 @@ angular.module('ionicParseApp.controllers', [])
     };
 })
 
-.controller('MainController', function($scope, $state, $rootScope, $stateParams, $ionicHistory) {
+.controller('MainController', function ($scope, $state, $rootScope, $stateParams, $ionicHistory) {
     if ($stateParams.clear) {
         $ionicHistory.clearHistory();
     }
@@ -184,12 +139,12 @@ angular.module('ionicParseApp.controllers', [])
     $scope.rightButtons = [{
         type: 'button-positive',
         content: '<i class="icon ion-navicon"></i>',
-        tap: function(e) {
+        tap: function (e) {
             $scope.sideMenuController.toggleRight();
         }
     }];
 
-    $scope.logout = function() {
+    $scope.logout = function () {
         Parse.User.logOut();
         $rootScope.user = null;
         $rootScope.isLoggedIn = false;
@@ -198,7 +153,56 @@ angular.module('ionicParseApp.controllers', [])
         });
     };
 
-    $scope.toggleMenu = function() {
+    $scope.toggleMenu = function () {
         $scope.sideMenuController.toggleRight();
+    };
+})
+
+.controller('PostController', function ($scope, $state, $rootScope, $stateParams, $ionicHistory) {
+    $scope.createPost = function () {
+        var currentUser = Parse.User.current();
+
+        var Post = Parse.Object.extend("Post");
+        var post = new Post();
+        post.set("createdBy", currentUser.id);
+
+        post.save(null, {
+            success: function (response) {
+                $scope.submitFile(response.id, 'file1');
+                $scope.submitFile(response.id, 'file2');
+            },
+            error: function (response, error) {
+            }
+        });
+    };
+
+    $scope.submitFile = function (postId, fileId) {
+        var fileUploadControl = document.getElementById(fileId).files[0];
+
+        if (fileUploadControl.size > 0) {
+            var file = fileUploadControl;
+            var name = "photo.jpg";
+            var parseFile = new Parse.File(name, file, file.type);
+
+            parseFile.save().then(function () {
+                // The file has been saved to Parse.
+                var Photo = Parse.Object.extend("Photo");
+                var photo = new Photo();
+                photo.set("postId", postId);
+                photo.set("url", parseFile.url());
+
+                photo.save(null, {
+                    success: function (response) {
+                        return response.id;
+                    },
+                    error: function (response, error) {
+                        //Failed to upload file
+                    }
+                });
+
+            }, function (error) {
+                // The file either could not be read, or could not be saved to Parse.
+            });
+        }
     };
 });
