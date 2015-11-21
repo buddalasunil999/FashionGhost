@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'ionicParseApp.controllers' is found in controllers.js
 angular.module('ionicParseApp',
-        [ 'ionic', 'ionicParseApp.controllers' ]
+        [ 'ionic', 'ionicParseApp.controllers','ngCordova' ]
     )
     .config(function($stateProvider, $urlRouterProvider) {
 
@@ -77,7 +77,17 @@ angular.module('ionicParseApp',
                         controller: 'PostController'
                     }
                 }
-            });
+            })
+           .state('app.camera', {
+                      url: '/camera',
+                      views: {
+                          'menuContent': {
+                              templateUrl: 'templates/camera.html',
+                              controller: 'CameraController'
+                          }
+                      }
+                  });
+
 
         $urlRouterProvider.otherwise('/welcome');
     })
