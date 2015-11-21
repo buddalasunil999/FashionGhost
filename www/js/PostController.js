@@ -12,6 +12,7 @@
         var Post = Parse.Object.extend("Post");
         var post = new Post();
         post.set("createdBy", currentUser.id);
+        post.set("description", $scope.description);
 
         post.save(null, {
             success: function (response) {
