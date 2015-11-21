@@ -3,6 +3,8 @@
     $scope.createPost = function () {
         var currentUser = Parse.User.current();
 
+        $scope.error = {};
+
         var Post = Parse.Object.extend("Post");
         var post = new Post();
         post.set("createdBy", currentUser.id);
@@ -11,8 +13,12 @@
             success: function (response) {
                 $scope.submitFile(response.id, 'file1');
                 $scope.submitFile(response.id, 'file2');
+                $state.go('app.home', {
+                    clear: true
+                });
             },
             error: function (response, error) {
+                $scope.error.message = error;
             }
         });
     };
