@@ -1,4 +1,4 @@
-﻿angular.module('FashionGhost').controller('mainController', ['$scope', function ($scope) {
+﻿angular.module('FashionGhost.controllers', []).controller('MainController', ['$scope', function ($scope) {
 
     Parse.initialize("qHDj4x6Wc9qqp4kChk9u2pTURr2EQdh5aaMMYU3W", "f5h0XtsTnEXmtPRMvTv47ndZD8xSSPuhNhjjAToc");
 
