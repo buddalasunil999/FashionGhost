@@ -41,6 +41,37 @@ angular.module('ionicParseApp.controllers', [])
     if (!$rootScope.isLoggedIn) {
         $state.go('welcome');
     }
+
+    $scope.getPosts = function () {
+        var currentUser = Parse.User.current();
+
+        var query = new Parse.Query("Post");
+        query.equalTo("createdBy", currentUser.id);
+
+        query.find({
+            success: function (results) {
+                // results contains all of the Post objects
+                for (post in results) {
+                    $scope.loadFiles(post.id);
+                };
+            }
+        });
+    };
+
+    $scope.loadFiles = function (postId) {
+
+        var query = new Parse.Query("Photo");
+        query.equalTo("postId", postId);
+
+        query.find({
+            success: function (results) {
+                // results contains all of the phtots objects
+                for (photo in results) {
+                };
+            }
+        });
+    };
+
 })
 
 .controller('ForgotPasswordController', function ($scope, $state, $ionicLoading) {

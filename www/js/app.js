@@ -67,6 +67,16 @@ angular.module('ionicParseApp',
                         controller: 'RegisterController'
                     }
                 }
+            })
+
+            .state('app.post', {
+                url: '/post',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/post.html',
+                        controller: 'PostController'
+                    }
+                }
             });
 
         $urlRouterProvider.otherwise('/welcome');

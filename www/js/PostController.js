@@ -1,7 +1,13 @@
 ﻿angular.module('ionicParseApp.controllers')
 .controller('PostController', function ($scope, $state, $rootScope, $stateParams, $ionicHistory) {
+    if (!$rootScope.isLoggedIn) {
+        $state.go('welcome');
+    }
+
     $scope.createPost = function () {
         var currentUser = Parse.User.current();
+
+        $scope.error = {};
 
         var Post = Parse.Object.extend("Post");
         var post = new Post();
@@ -11,8 +17,12 @@
             success: function (response) {
                 $scope.submitFile(response.id, 'file1');
                 $scope.submitFile(response.id, 'file2');
+                $state.go('app.home', {
+                    clear: true
+                });
             },
             error: function (response, error) {
+                $scope.error.message = error;
             }
         });
     };

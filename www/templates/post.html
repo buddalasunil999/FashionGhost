@@ -1,17 +1,16 @@
-﻿<ion-view title="LOGIN">
-    <ion-content has-header="true" padding="true">
-        <ion-item>
-            <div ng-controller="PostController">
-                <div>
-                    <label for="description">Description</label>
-                    <input id="description" type="text" placeholder="Comments..." />
-                    <input id="file1" type="file" value="Choose Image 1" accept="image/*" />
-                </div>
-                <div>
-                    <input id="file2" type="file" value="Choose Image 2" accept="image/*" />
-                </div>
-                <input type="button" value="Submit" ng-click="createPost()" />
+﻿<ion-view title="NEW POST">
+    <ion-content has-header="true" has-tabs="true" padding="true">
+        <div>
+            <label for="description">Description</label>
+            <input id="description" type="text" placeholder="Comments..." ng-model="description" />
+            <div>
+                <input id="file1" type="file" value="Choose Image 1" class="button" accept="image/*" />
             </div>
-        </ion-item>
+            <div>
+                <input id="file2" type="file" value="Choose Image 2" class="button" accept="image/*" />
+            </div>
+            <div class="assertive" ng-show="error.message">{{error.message}}</div>
+            <input type="button" value="Submit" class="button button-block" ng-click="createPost()" />
+        </div>
     </ion-content>
 </ion-view>
