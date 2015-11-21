@@ -15,5 +15,8 @@ angular.module('starter', ['ionic'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+
+    Parse.initialize("qHDj4x6Wc9qqp4kChk9u2pTURr2EQdh5aaMMYU3W", "f5h0XtsTnEXmtPRMvTv47ndZD8xSSPuhNhjjAToc");
+
   });
 })
