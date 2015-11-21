@@ -10,15 +10,14 @@ angular.module('ionicParseApp.controllers')
 .controller('CameraController', function ($scope, $state, $rootScope, $stateParams, $ionicHistory,$cordovaCamera) {
 
    $scope.takePicture = function () {
-          console.log("asdfasdfasssss");
                     var options = {
                       quality: 75,
                       destinationType: Camera.DestinationType.DATA_URL,
                       sourceType: Camera.PictureSourceType.CAMERA,
-                      allowEdit: true,
+//                      allowEdit: true,
                       encodingType: Camera.EncodingType.JPEG,
-                      targetWidth: 300,
-                      targetHeight: 300,
+//                      targetWidth: 300,
+//                      targetHeight: 300,
                       popoverOptions: CameraPopoverOptions,
                       saveToPhotoAlbum: false
                   };
@@ -30,24 +29,24 @@ angular.module('ionicParseApp.controllers')
                       });
                   }
 
-                  $scope.choosePhoto = function () {
-                    var options = {
-                      quality: 75,
-                      destinationType: Camera.DestinationType.DATA_URL,
-                      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-                      allowEdit: true,
-                      encodingType: Camera.EncodingType.JPEG,
-                      targetWidth: 300,
-                      targetHeight: 300,
-                      popoverOptions: CameraPopoverOptions,
-                      saveToPhotoAlbum: false
-                  };
+//                  $scope.choosePhoto = function () {
+//                    var options = {
+//                      quality: 75,
+//                      destinationType: Camera.DestinationType.DATA_URL,
+//                      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+//                      allowEdit: true,
+//                      encodingType: Camera.EncodingType.JPEG,
+//                      targetWidth: 300,
+//                      targetHeight: 300,
+//                      popoverOptions: CameraPopoverOptions,
+//                      saveToPhotoAlbum: false
+//                  };
 
-                      $cordovaCamera.getPicture(options).then(function (imageData) {
-                          $scope.imgURI = "data:image/jpeg;base64," + imageData;
-                      }, function (err) {
-                          // An error occured. Show a message to the user
-                      });
+//                      $cordovaCamera.getPicture(options).then(function (imageData) {
+//                          $scope.imgURI = "data:image/jpeg;base64," + imageData;
+//                      }, function (err) {
+//                          // An error occured. Show a message to the user
+//                      });
                   }
 
 });
