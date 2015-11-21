@@ -1,5 +1,9 @@
 ﻿angular.module('ionicParseApp.controllers')
 .controller('PostController', function ($scope, $state, $rootScope, $stateParams, $ionicHistory) {
+    if (!$rootScope.isLoggedIn) {
+        $state.go('welcome');
+    }
+
     $scope.createPost = function () {
         var currentUser = Parse.User.current();
 
