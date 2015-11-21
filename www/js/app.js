@@ -5,18 +5,18 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic'])
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    }
-    if(window.StatusBar) {
-      StatusBar.styleDefault();
-    }
+  .run(function ($ionicPlatform) {
+    $ionicPlatform.ready(function () {
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      if (window.cordova && window.cordova.plugins.Keyboard) {
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true)
+      }
+      if (window.StatusBar) {
+        StatusBar.styleDefault()
+      }
 
-    Parse.initialize("qHDj4x6Wc9qqp4kChk9u2pTURr2EQdh5aaMMYU3W", "f5h0XtsTnEXmtPRMvTv47ndZD8xSSPuhNhjjAToc");
+      Parse.initialize('qHDj4x6Wc9qqp4kChk9u2pTURr2EQdh5aaMMYU3W', 'f5h0XtsTnEXmtPRMvTv47ndZD8xSSPuhNhjjAToc')
 
-  });
-})
+    })
+  })
