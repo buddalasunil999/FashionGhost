@@ -1,6 +1,4 @@
-﻿
-
-angular.module('ionicParseApp.controllers')
+﻿angular.module('ionicParseApp.controllers')
 .controller('LoginController', function ($scope, $state, $rootScope, $ionicLoading) {
     $scope.user = {
         username: null,

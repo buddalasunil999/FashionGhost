@@ -4,9 +4,7 @@ angular.module('ionicParseApp.controllers', [])
         $ionicHistory.clearHistory();
         $ionicHistory.clearCache();
     }
-
-    Parse.initialize("qHDj4x6Wc9qqp4kChk9u2pTURr2EQdh5aaMMYU3W", "f5h0XtsTnEXmtPRMvTv47ndZD8xSSPuhNhjjAToc");
-
+    
     $scope.logout = function () {
         Parse.User.logOut();
         $rootScope.user = null;
