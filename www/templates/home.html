@@ -8,8 +8,8 @@
 			<h2>Marnoosh Dordahan</h2>
 			<p>1 minute ago</p>
 		</div>
-		<div ng-repeat="photo in post.photos">
-			
+		<ion-spinner ng-show="{{showSpinner}}"></ion-spinner>
+		<div ng-repeat="photo in post.photos" ng-show="{{!showSpinner}}" >
 			<div class="img-group img-left">
 				<img class="img-selfies" src="{{photo.url}}">
 				<span>

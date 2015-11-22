@@ -6,6 +6,7 @@
     }
 
     $scope.posts = [];
+    $scope.showSpinner = true;
 
     $scope.getPosts = function () {
         var currentUser = Parse.User.current();
@@ -36,6 +37,7 @@
                                           post.photos = results;
                                       }
 
+                                      $scope.showSpinner = false;
                                       $scope.posts.push(post);
                                   }
                               })
