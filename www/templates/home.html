@@ -1,12 +1,27 @@
 <ion-view title="Fashion Ghost" right-buttons="rightButtons">
-    <ion-content has-header="true" has-tabs="true" padding="true">
-        <div class="list card">
-            <div ng-repeat="post in posts">
-                {{post.description}}
-                <div class="item item-avatar" ng-repeat="photo in post.photos">
-                    <img src="{{photo.url}}" />
-                </div>
-            </div>
-        </div>
-    </ion-content>
+<ion-content has-header="true" has-tabs="true" padding="true">
+
+	<div ng-repeat="post in posts">
+	<div class="list card">
+		<div class="item item-avatar">
+			<img src="img/marnoosh.jpg">
+			<h2>Marnoosh Dordahan</h2>
+			<p>1 minute ago</p>
+		</div>
+		<div ng-repeat="photo in post.photos">
+			
+			<div class="img-group img-left">
+				<img class="img-selfies" src="{{photo.url}}">
+				<span>
+					<a class="tab-item" href="#">
+						<i class="icon ion-thumbsup"></i>
+						0 Likes
+					</a>
+				</span>
+			</div>
+			
+		</div>
+	</div>
+</div>
+</ion-content>
 </ion-view>

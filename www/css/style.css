@@ -1,1 +1,27 @@
-﻿
+﻿.img-selfies {
+	width: 150px;
+	height: 190px;
+}
+
+.img-group {
+	position: relative;
+	float: left;
+
+}
+
+.img-left {
+	float: left;
+	margin: 5px 20px 0;
+}
+
+.img-right {
+	float: right;
+}
+
+.liked {
+	color: #886aea;
+}
+
+.take-photo::before {
+	font-size:200px;
+}
