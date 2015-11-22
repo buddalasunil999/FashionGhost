@@ -23,15 +23,16 @@
 
 
     $scope.SaveImage = function () {
-                  var parseFile = new Parse.File("test.jpg", {base64:  $scope.base64string}, "image/jpeg");
+                  var parseFile = new Parse.File("test.jpg", {base64:  $scope.imgURI});
 
 //                  var parseFile = new Parse.File(name, {base64: $scope.base64string}, "image/jpg");
-                                          parseFile.save().then(function() {
+                                          parseFile.save().then(function(reponse) {
                                                                    //IMAGE SUCCESSFULLY UPLOADED
                                                                     var alertPopup = $ionicPopup.alert({
                                                                                                       title: 'Don\'t eat that!',
-                                                                                                      template: 'It might taste good'
+                                                                                                      template: reponse
                                                                                                     });
+
                                           },
                                           function(error){
                                           alert(error.message);
