@@ -1,17 +1,16 @@
 ﻿<ion-view title="NEW POST">
     <ion-content has-header="true" has-tabs="true" padding="true">
         <div>
-            <label for="description">Description</label>
-            <input id="description" type="text" placeholder="Comments..." ng-model="description" />
+            <h2 for="description">Create a new post</h2>
             <div>
               <img ng-show="imageDataOneURI !== undefined" ng-src="{{imageDataOneURI}}" height="300" width="300">
               <img ng-show="imageDataOneURI === undefined" ng-src="http://placehold.it/300x300">
-              <button class="button" ng-click="takePicture(1)">Take Picture</button>
+              <button class="button" ng-click="takePicture(1)">Take First Picture</button>
             </div>
             <div>
               <img ng-show="imageDataTwoURI !== undefined" ng-src="{{imageDataTwoURI}}" height="300" width="300">
               <img ng-show="imageDataTwoURI === undefined" ng-src="http://placehold.it/300x300">
-              <button class="button" ng-click="takePicture(2)">Take Picture</button>
+              <button class="button" ng-click="takePicture(2)">Take Second Picture</button>
             </div>
             <div class="assertive" ng-show="error.message">{{error.message}}</div>
             <input type="button" value="Submit" class="button button-block" ng-click="createPost()" />
