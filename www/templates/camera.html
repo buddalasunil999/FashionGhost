@@ -1,7 +1,45 @@
-<ion-view title="NEW Camera">
-    <ion-content has-header="true" has-tabs="true" padding="true" ng-controller="CameraController">
-        <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}">
-        <img ng-show="imgURI === undefined" ng-src="http://placehold.it/300x300">
-        <button class="button" ng-click="takePicture()">Take Picture</button>
-    </ion-content>
+<ion-view title="Advanced Search">
+<ion-content has-header="true" has-tabs="true" padding="true" ng-controller="CameraController">
+<div class="list">
+	<label class="item item-input item-select">
+		<div class="input-label">
+			Category
+		</div>
+		<select>
+			<option>Shoes</option>
+		</select>
+	</label>
+
+	<label class="item item-input item-select">
+		<div class="input-label">
+			Ocasion
+		</div>
+		<select>
+			<option>Dating</option>
+		</select>
+	</label>
+
+	<label class="item item-input item-select">
+		<div class="input-label">
+			Age group
+		</div>
+		<select>
+			<option>15-20</option>
+		</select>
+	</label>
+
+	<label class="item item-input item-select">
+		<div class="input-label">
+			Country
+		</div>
+		<select>
+			<option>New Zealand</option>
+		</select>
+	</label>
+
+<div class="padding">
+        <button class="button button-block button-positive" style="background-color: #886aea">Filter</button>
+      </div>
+</div>
+</ion-content>
 </ion-view>
