@@ -1,1 +1,22 @@
-﻿
+﻿.img-selfies {
+	width: 150px;
+	height: 190px;
+}
+
+.img-group {
+	position: relative;
+	float: left;
+
+}
+
+.img-left {
+	float: left;
+}
+
+.img-right {
+	float: right;
+}
+
+.liked {
+	color: #886aea;
+}
