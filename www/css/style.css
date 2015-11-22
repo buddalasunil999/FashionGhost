@@ -24,6 +24,7 @@
 
 .take-photo::before {
 	font-size:200px;
+	cursor: pointer;
 }
 
 .button {

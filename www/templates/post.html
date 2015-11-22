@@ -4,13 +4,11 @@
             <h2 for="description">Create a new post</h2>
             <div>
               <img ng-show="imageDataOneURI !== undefined" ng-src="{{imageDataOneURI}}" height="300" width="300">
-              <img ng-show="imageDataOneURI === undefined" ng-src="http://placehold.it/300x300">
-              <button class="button" ng-click="takePicture(1)">Take First Picture</button>
+              <input class="button button-block" value="Take first picture" ng-click="takePicture(1)" ng-show="imageDataOneURI === undefined" />
             </div>
             <div>
               <img ng-show="imageDataTwoURI !== undefined" ng-src="{{imageDataTwoURI}}" height="300" width="300">
-              <img ng-show="imageDataTwoURI === undefined" ng-src="http://placehold.it/300x300">
-              <button class="button" ng-click="takePicture(2)">Take Second Picture</button>
+              <input class="button button-block" value="Take second picture" ng-click="takePicture(2)" ng-show="imageDataTwoURI === undefined" />
             </div>
             <div class="assertive" ng-show="error.message">{{error.message}}</div>
             <input type="button" value="Submit" class="button button-block" ng-click="createPost()" />
