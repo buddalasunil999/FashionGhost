@@ -4,10 +4,14 @@
             <label for="description">Description</label>
             <input id="description" type="text" placeholder="Comments..." ng-model="description" />
             <div>
-                <input id="file1" type="file" value="Choose Image 1" class="button" accept="image/*" />
+              <img ng-show="imageDataOneURI !== undefined" ng-src="{{imageDataOneURI}}" height="300" width="300">
+              <img ng-show="imageDataOneURI === undefined" ng-src="http://placehold.it/300x300">
+              <button class="button" ng-click="takePicture(1)">Take Picture</button>
             </div>
             <div>
-                <input id="file2" type="file" value="Choose Image 2" class="button" accept="image/*" />
+              <img ng-show="imageDataTwoURI !== undefined" ng-src="{{imageDataTwoURI}}" height="300" width="300">
+              <img ng-show="imageDataTwoURI === undefined" ng-src="http://placehold.it/300x300">
+              <button class="button" ng-click="takePicture(2)">Take Picture</button>
             </div>
             <div class="assertive" ng-show="error.message">{{error.message}}</div>
             <input type="button" value="Submit" class="button button-block" ng-click="createPost()" />
