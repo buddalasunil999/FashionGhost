@@ -2,5 +2,7 @@ plugins
 platforms
 resources
 node_modules
+.idea
+www/lib
 
 **/*/*.log

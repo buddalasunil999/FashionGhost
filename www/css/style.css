@@ -1,1 +1,33 @@
-/* Empty. Add your own CSS if you like */
+﻿.img-selfies {
+	width: 150px;
+	height: 200px;
+}
+
+.img-group {
+	position: relative;
+	float: left;
+
+}
+
+.img-left {
+	float: left;
+	margin: 5px 10px 0;
+}
+
+.img-right {
+	float: right;
+}
+
+.liked {
+	color: #886aea;
+}
+
+.take-photo::before {
+	font-size:200px;
+	cursor: pointer;
+}
+
+.button {
+	background-color: #886aea;
+	color: #FFFFFF;
+}
